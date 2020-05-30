@@ -348,3 +348,21 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# exe libs
+lib/
+libs/
+libraries/
+files/
+
+# sign key
+*.snk
+
+# custom
+*.licx*
+*.zip
+*.bak
+
+/src/TypicalSouthernFoods.DXWebApp/*
+/src/TypicalSouthernFoods.Web/*
+/src/TypicalSouthernFoods.WebTest/*
