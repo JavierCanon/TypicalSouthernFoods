@@ -12,11 +12,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{3C7D111D-E877-44DE-9C2B-88A05A26452B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypicalSouthernFoods.Web", "src\TypicalSouthernFoods.Web\TypicalSouthernFoods.Web.csproj", "{6E24ECA6-50AF-4E2F-B365-574471364AF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypicalSouthernFoods.HTML5MVCWeb", "src\TypicalSouthernFoods.HTML5MVCWeb\TypicalSouthernFoods.HTML5MVCWeb.csproj", "{8B79752A-BA8F-45B7-B117-ABDA09121416}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypicalSouthernFoods.WebTest", "src\TypicalSouthernFoods.WebTest\TypicalSouthernFoods.WebTest.csproj", "{7B62CEC2-82C1-449D-9231-339FA51EBD08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypicalSouthernFoods.MVCWeb", "src\TypicalSouthernFoods.MVCWeb\TypicalSouthernFoods.MVCWeb.csproj", "{6E24ECA6-50AF-4E2F-B365-574471364AF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypicalSouthernFoods.DXWebApp", "src\TypicalSouthernFoods.DXWebApp\TypicalSouthernFoods.DXWebApp.csproj", "{8B79752A-BA8F-45B7-B117-ABDA09121416}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypicalSouthernFoods.BootstrapWebForms", "src\TypicalSouthernFoods.BootstrapWebForms\TypicalSouthernFoods.BootstrapWebForms.csproj", "{06B84625-1918-4D22-AC4C-E65CC6EFA072}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{A162B60B-A0A6-4EB6-AD59-B471B2B406A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Oracle", "Oracle", "{D82C53EC-04CE-443E-B75A-E1964FE1DF9E}"
+	ProjectSection(SolutionItems) = preProject
+		src\Database\Oracle18c-v18.4\TSFOODS.sql = src\Database\Oracle18c-v18.4\TSFOODS.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,26 +31,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6E24ECA6-50AF-4E2F-B365-574471364AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E24ECA6-50AF-4E2F-B365-574471364AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E24ECA6-50AF-4E2F-B365-574471364AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E24ECA6-50AF-4E2F-B365-574471364AF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B62CEC2-82C1-449D-9231-339FA51EBD08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B62CEC2-82C1-449D-9231-339FA51EBD08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B62CEC2-82C1-449D-9231-339FA51EBD08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B62CEC2-82C1-449D-9231-339FA51EBD08}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B79752A-BA8F-45B7-B117-ABDA09121416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B79752A-BA8F-45B7-B117-ABDA09121416}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B79752A-BA8F-45B7-B117-ABDA09121416}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B79752A-BA8F-45B7-B117-ABDA09121416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E24ECA6-50AF-4E2F-B365-574471364AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E24ECA6-50AF-4E2F-B365-574471364AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E24ECA6-50AF-4E2F-B365-574471364AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E24ECA6-50AF-4E2F-B365-574471364AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06B84625-1918-4D22-AC4C-E65CC6EFA072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B84625-1918-4D22-AC4C-E65CC6EFA072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B84625-1918-4D22-AC4C-E65CC6EFA072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B84625-1918-4D22-AC4C-E65CC6EFA072}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6E24ECA6-50AF-4E2F-B365-574471364AF5} = {3C7D111D-E877-44DE-9C2B-88A05A26452B}
-		{7B62CEC2-82C1-449D-9231-339FA51EBD08} = {3C7D111D-E877-44DE-9C2B-88A05A26452B}
 		{8B79752A-BA8F-45B7-B117-ABDA09121416} = {3C7D111D-E877-44DE-9C2B-88A05A26452B}
+		{6E24ECA6-50AF-4E2F-B365-574471364AF5} = {3C7D111D-E877-44DE-9C2B-88A05A26452B}
+		{06B84625-1918-4D22-AC4C-E65CC6EFA072} = {3C7D111D-E877-44DE-9C2B-88A05A26452B}
+		{D82C53EC-04CE-443E-B75A-E1964FE1DF9E} = {A162B60B-A0A6-4EB6-AD59-B471B2B406A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B3018AA-C2DE-4E3D-9EA3-73DBEC01B2DF}

@@ -1,0 +1,52 @@
+[
+  {
+    "date": "2017-01-01",
+    "income": 4,
+    "outcome": 8
+  },
+  {
+    "date": "2017-01-02",
+    "income": 2,
+    "outcome": 3
+  },
+  {
+    "date": "2017-01-03",
+    "income": 10,
+    "outcome": 7
+  },
+  {
+    "date": "2017-01-04",
+    "income": 7,
+    "outcome": 1
+  },
+  {
+    "date": "2017-01-05",
+    "income": 7,
+    "outcome": 9
+  },
+  {
+    "date": "2017-01-06",
+    "income": 6,
+    "outcome": 3
+  },
+  {
+    "date": "2017-01-07",
+    "income": 2,
+    "outcome": 5
+  },
+  {
+    "date": "2017-01-08",
+    "income": 2,
+    "outcome": 4
+  },
+  {
+    "date": "2017-01-09",
+    "income": 4,
+    "outcome": 1
+  },
+  {
+    "date": "2017-01-10",
+    "income": 9,
+    "outcome": 7
+  }
+]

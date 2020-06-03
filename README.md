@@ -12,6 +12,7 @@ Typical Southern Foods is a sample application built using ASP.NET, Oracle 18c D
 ## Features
 
 ✅ HTML5 JavaScript Responsive Web Development
+
 ✅ MVC  
 
 ### Clean Architecture
@@ -30,6 +31,12 @@ Typical Southern Foods is a sample application built using ASP.NET, Oracle 18c D
 
 ## Screenshoots
 
+![Screenshoot](docs/img/screenshoots/Annotation-2020-06-03-173632.png)
+![Screenshoot](docs/img/screenshoots/Annotation-2020-06-03-173812.png)
+![Screenshoot](docs/img/screenshoots/Annotation-2020-06-03-173939.png)
+![Screenshoot](docs/img/screenshoots/Annotation-2020-06-03-174110.png)
+![Screenshoot](docs/img/screenshoots/Annotation-2020-06-03-174238.png)
+
 ## Getting Started
 
 Use these instructions to get the project up and running.
@@ -43,6 +50,12 @@ You will need the following tools:
 * [DevExpress 20.1.3](https://www.devexpress.com/)
 * [Oracle Database Server](https://www.oracle.com/downloads/)
 * [Oracle Data Access Components - .NET](https://www.oracle.com/database/technologies/net-downloads.html)
+
+You need the following NuGet Packages, you can restore from solution:
+ * "EntityFramework" version "6.4.4"
+ * "Microsoft.AspNet.EntityDataSource" version "6.0.0" 
+ * "Oracle.ManagedDataAccess" version "19.7.0" 
+ * "Oracle.ManagedDataAccess.EntityFramework" version "19.7.0" 
 
 ### Setup
 Follow these steps to get your development environment set up:
@@ -60,7 +73,7 @@ Follow these steps to get your development environment set up:
 * Razor 3
 * Blazor .NET Core 3.1
 * ASP.NET 4.8 Webforms
-* Entity Framework 6
+* Entity Framework 6.4
 * Oracle RDBMS 18c
 * Bootstrap 4
 * JQuery 3.5

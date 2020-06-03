@@ -1,0 +1,85 @@
+@font-face {
+    font-family: demo-icons;
+    src: url('demo-icons.eot');
+    src: url('demo-icons.eot?#iefix') format('eot'),
+    url('demo-icons.woff2') format('woff2'),
+    url('demo-icons.woff') format('woff'),
+    url('demo-icons.ttf') format('truetype'),
+    url('demo-icons.svg') format('svg');
+} 
+.demo-icon {
+    text-rendering: auto;
+    font-family: "demo-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1rem;
+    font-size: 1rem;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+.demo-icon-1::before {
+    content: "\e001";
+}
+.demo-icon-2::before {
+    content: "\e002";
+}
+.demo-icon-3::before {
+    content: "\e003";
+}
+.demo-icon-alert::before {
+    content: "\e004";
+}
+.demo-icon-col::before {
+    content: "\e005";
+}
+.demo-icon-del::before {
+    content: "\e006";
+}
+.demo-icon-edit::before {
+    content: "\e007";
+}
+.demo-icon-ex::before {
+    content: "\e008";
+}
+.demo-icon-export::before {
+    content: "\e009";
+}
+.demo-icon-filter::before {
+    content: "\e00a";
+}
+.demo-icon-left::before {
+    content: "\e00b";
+}
+.demo-icon-logo::before {
+    content: "\e00c";
+}
+.demo-icon-logout::before {
+    content: "\e00d";
+}
+.demo-icon-mail::before {
+    content: "\e00e";
+}
+.demo-icon-menu::before {
+    content: "\e00f";
+}
+.demo-icon-new::before {
+    content: "\e010";
+}
+.demo-icon-right::before {
+    content: "\e011";
+}
+.demo-icon-search-menu::before {
+    content: "\e012";
+}
+.demo-icon-search-toolbar::before {
+    content: "\e013";
+}
+.demo-icon-settings::before {
+    content: "\e014";
+}
+.demo-icon-today::before {
+    content: "\e015";
+}
+.demo-icon-user::before {
+    content: "\e016";
+}

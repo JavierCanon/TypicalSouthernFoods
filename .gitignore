@@ -360,9 +360,9 @@ files/
 
 # custom
 *.licx*
-*.zip
 *.bak
+*.zip
 
-/src/TypicalSouthernFoods.DXWebApp/*
-/src/TypicalSouthernFoods.Web/*
-/src/TypicalSouthernFoods.WebTest/*
+/src/TypicalSouthernFoods.HTML5MVCWeb/*
+/src/TypicalSouthernFoods.MVCWeb/*
+
