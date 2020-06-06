@@ -363,6 +363,3 @@ files/
 *.bak
 *.zip
 
-/src/TypicalSouthernFoods.HTML5MVCWeb/*
-/src/TypicalSouthernFoods.MVCWeb/*
-

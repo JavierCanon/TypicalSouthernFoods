@@ -1,0 +1,44 @@
+@{ ViewBag.Title = "Home"; }
+<div class="container-fluid">
+    <div class="row">
+        <h1>Clients</h1>
+
+        @Html.DevExpress().GridView(settings =>
+        {
+            settings.Name = "gvDataBindingToLinq";
+            //settings.CallbackRouteValues = new { Controller = "CLIENTsController", Action = "DataBindingToLargeDatabasePartial" };
+
+            settings.KeyFieldName = "ID";
+            settings.Width = Unit.Percentage(100);
+            settings.EnableRowsCache = true;
+
+            settings.Settings.ShowFilterRow = true;
+            settings.Settings.ShowGroupPanel = true;
+            settings.Settings.ShowFooter = true;
+
+            settings.Columns.Add("From").Width = Unit.Pixel(200);
+            settings.Columns.Add("Subject");
+            settings.Columns.Add(column =>
+            {
+                column.FieldName = "Sent";
+                column.ColumnType = MVCxGridViewColumnType.DateEdit;
+                column.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+                column.Width = Unit.Pixel(100);
+            });
+            settings.Columns.Add("Size").Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+            settings.Columns.Add("HasAttachment", "Attachment?", MVCxGridViewColumnType.CheckBox).Width = Unit.Pixel(100);
+
+            settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Sum, "Size");
+            settings.TotalSummary.Add(DevExpress.Data.SummaryItemType.Count, "Subject");
+            settings.GroupSummary.Add(DevExpress.Data.SummaryItemType.Count, "");
+
+            settings.ClientSideEvents.Init = "function(s, e) { s.PerformCallback(); }";
+            settings.ClientSideEvents.BeginCallback = "function(s, e) { OnStartCallback(s, e); }";
+            settings.ClientSideEvents.EndCallback = "function(s, e) { OnEndCallback(s, e); }";
+
+
+        }).GetHtml()
+
+
+    </div>
+</div>

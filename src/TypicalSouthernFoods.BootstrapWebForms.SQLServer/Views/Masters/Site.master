@@ -1,0 +1,46 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="TypicalSouthernFoods.Webforms.Views.Masters.Site" %>
+
+<%@ Register Src="~/Views/UserControls/Header.ascx" TagPrefix="demo" TagName="Header" %>
+<%@ Register Src="~/Views/UserControls/HeaderTitle.ascx" TagPrefix="demo" TagName="HeaderTitle" %>
+<%@ Register Src="~/Views/UserControls/Navigation.ascx" TagPrefix="demo" TagName="Navigation" %>
+
+<!DOCTYPE html>
+
+<html class="h-100 theme-light demo-loading-process">
+<head runat="server">
+    <title>Typical Southern Foods</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link id="themeLink" runat="server" rel="stylesheet" 
+        href="~/Content/light/bootstrap.min.css" 
+        data-theme-dark-url="/Content/dark/bootstrap.min.css"
+        data-theme-light-url="/Content/light/bootstrap.min.css" />
+    <link runat="server" href="~/Content/demo-icons.css" rel="stylesheet" />
+    <link runat="server" href="~/Content/common.css" rel="stylesheet" />
+    
+    <script type="text/javascript" src="/Content/common.js" defer="defer"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="h-100">
+    <form id="form1" runat="server" class="h-100">
+        <div class="demo-header-separator shadow"></div>
+        <div class="d-flex h-100">
+            <div class="d-none d-lg-flex flex-shrink-0 flex-column demo-side-nav">
+                <div class="h-100 overflow-hidden demo-area-highlight">
+                    <demo:HeaderTitle runat="server" id="HeaderTitle" />
+                    <demo:Navigation runat="server" id="Navigation" />
+                </div>
+            </div>
+            <div class="d-flex flex-fill flex-column demo-content">
+                <demo:Header runat="server" ID="Header" />
+                <div class="d-flex flex-fill overflow-auto">
+                    <asp:ContentPlaceHolder ID="mainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="demo-toast-container"></div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <EFDataSource Name="EF Data Source 1" ConnectionStringName="EntitiesDataModel" ConnectionString="" Source="TypicalSouthernFoods.Web.Persistence.EntitiesDataModel, TypicalSouthernFoods.BootstrapMVCWeb, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ComponentName="dashboardEFDataSource1" />
+  </DataSources>
+  <Items>
+    <DateFilter ComponentName="dateFilterDashboardItem1" Name="Date Filter" DataSource="dashboardEFDataSource1" DataMember="INVOICES_DET" IsMasterFilterCrossDataSource="true" SelectedDateTimePeriodIndex="This Year">
+      <DataItems>
+        <Dimension DataMember="INVOICE.INVOICE_DATE" DefaultId="DataItem0" />
+      </DataItems>
+      <Dimension DefaultId="DataItem0" />
+      <DateTimePeriods>
+        <DateTimePeriod Name="This Year">
+          <StartLimit>
+            <FlowDateTimePeriodLimit />
+          </StartLimit>
+          <EndLimit>
+            <FlowDateTimePeriodLimit Offset="1" />
+          </EndLimit>
+        </DateTimePeriod>
+        <DateTimePeriod Name="Last Year">
+          <StartLimit>
+            <FlowDateTimePeriodLimit Offset="-1" />
+          </StartLimit>
+          <EndLimit>
+            <FlowDateTimePeriodLimit />
+          </EndLimit>
+        </DateTimePeriod>
+        <DateTimePeriod Name="Last 2 Years">
+          <StartLimit>
+            <FlowDateTimePeriodLimit Offset="-2" />
+          </StartLimit>
+          <EndLimit>
+            <FlowDateTimePeriodLimit />
+          </EndLimit>
+        </DateTimePeriod>
+        <DateTimePeriod Name="Last 3 Years">
+          <StartLimit>
+            <FlowDateTimePeriodLimit Offset="-3" />
+          </StartLimit>
+          <EndLimit>
+            <FlowDateTimePeriodLimit />
+          </EndLimit>
+        </DateTimePeriod>
+      </DateTimePeriods>
+    </DateFilter>
+    <Pivot ComponentName="pivotDashboardItem1" Name="Pivot Sales and Clients" DataSource="dashboardEFDataSource1" DataMember="INVOICES_DET">
+      <DataItems>
+        <Dimension DataMember="INVOICE.INVOICE_DATE" DefaultId="DataItem0" />
+        <Measure DataMember="PRICE" Name="Sales (Sum)" DefaultId="DataItem1" />
+        <Dimension DataMember="INVOICE.INVOICE_DATE" DateTimeGroupInterval="Month" DefaultId="DataItem2" />
+        <Dimension DataMember="RECIPE_NAME" DefaultId="DataItem3" />
+        <Dimension DataMember="INVOICE.CLIENT.NAMES" DefaultId="DataItem4" />
+      </DataItems>
+      <Columns>
+        <Column DefaultId="DataItem0" />
+        <Column DefaultId="DataItem2" />
+      </Columns>
+      <Rows>
+        <Row DefaultId="DataItem3" />
+        <Row DefaultId="DataItem4" />
+      </Rows>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pivot>
+    <Chart ComponentName="chartDashboardItem1" Name="Sales by Waiter  " DataSource="dashboardEFDataSource1" DataMember="INVOICES_DET">
+      <DataItems>
+        <Dimension DataMember="INVOICE.WAITER.NAMES" DefaultId="DataItem0" />
+        <Measure DataMember="PRICE" Name="Sales (Sum)" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple PlotOnSecondaryAxis="true">
+              <Value DefaultId="DataItem1" />
+              <PointLabelOptions Orientation="RotateLeft" OverlappingMode="Reposition" Position="Inside" ShowForZeroValues="true" ContentType="Value" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Pie ComponentName="pieDashboardItem2" Name="% Orders by Waiter" DataSource="dashboardEFDataSource1" DataMember="INVOICES_DET">
+      <DataItems>
+        <Dimension DataMember="INVOICE.WAITER.NAMES" DefaultId="DataItem0" />
+        <Measure DataMember="INVOICE.ID" Name="Invoices (Count)" SummaryType="Count" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Pie ComponentName="pieDashboardItem3" Name="% Recipes Served" DataSource="dashboardEFDataSource1" DataMember="INVOICES_DET">
+      <DataItems>
+        <Measure DataMember="ID" Name="Recipes (Count)" SummaryType="Count" DefaultId="DataItem1" />
+        <Dimension DataMember="RECIPE_NAME" DefaultId="DataItem0" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Card ComponentName="cardDashboardItem1" Name="Top Recipes Sold" DataSource="dashboardEFDataSource1" DataMember="INVOICES_DET">
+      <DataItems>
+        <Dimension DataMember="RECIPE_NAME" DefaultId="DataItem0" />
+        <Measure DataMember="ID" Name="Recipe (Count)" SummaryType="Count" DefaultId="DataItem1" />
+        <Dimension DataMember="INVOICE.WAITER.NAMES" DefaultId="DataItem2" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+        <SeriesDimension DefaultId="DataItem2" />
+      </SeriesDimensions>
+      <Card>
+        <ActualValue DefaultId="DataItem1" />
+        <AbsoluteVariationNumericFormat />
+        <PercentVariationNumericFormat />
+        <PercentOfTargetNumericFormat />
+        <LayoutTemplate Type="Stretched">
+          <TopValue Visible="true" ValueType="ActualValue" DimensionIndex="0" />
+          <MainValue Visible="true" ValueType="Title" DimensionIndex="0" />
+          <SubValue Visible="true" ValueType="Subtitle" DimensionIndex="0" />
+          <BottomValue1 Visible="true" ValueType="PercentVariation" DimensionIndex="0" />
+          <BottomValue2 Visible="true" ValueType="AbsoluteVariation" DimensionIndex="0" />
+          <DeltaIndicator Visible="true" />
+          <Sparkline Visible="true" />
+        </LayoutTemplate>
+      </Card>
+    </Card>
+    <ScatterChart ComponentName="scatterChartDashboardItem1" Name="Scatter Chart Sales by Table" DataSource="dashboardEFDataSource1" DataMember="INVOICES_DET">
+      <DataItems>
+        <Dimension DataMember="INVOICE.TABLE.NAME" DefaultId="DataItem0" />
+        <Measure DataMember="PRICE" DefaultId="DataItem1" />
+        <Measure DataMember="INVOICE.INVOICE_DATE" SummaryType="Count" DefaultId="DataItem2" />
+        <Measure DataMember="INVOICE.ID_TABLE" Name="TABLE (Count)" SummaryType="Count" DefaultId="DataItem3" />
+      </DataItems>
+      <MeasureX DefaultId="DataItem3" />
+      <MeasureY DefaultId="DataItem2" />
+      <MeasureWeight DefaultId="DataItem1" />
+      <Dimensions>
+        <Dimension DefaultId="DataItem0" />
+      </Dimensions>
+    </ScatterChart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical" Weight="100">
+      <LayoutGroup Weight="29.553679131483715">
+        <LayoutItem DashboardItem="chartDashboardItem1" Weight="32.604562737642588" />
+        <LayoutItem DashboardItem="pieDashboardItem2" Weight="32.224334600760457" />
+        <LayoutItem DashboardItem="pieDashboardItem3" Weight="35.171102661596962" />
+      </LayoutGroup>
+      <LayoutGroup Orientation="Vertical" Weight="70.446320868516281">
+        <LayoutGroup Weight="39.897260273972606">
+          <LayoutItem DashboardItem="cardDashboardItem1" Weight="52.376425855513311" />
+          <LayoutItem DashboardItem="scatterChartDashboardItem1" Weight="47.623574144486689" />
+        </LayoutGroup>
+        <LayoutGroup Orientation="Vertical" Weight="60.102739726027394">
+          <LayoutItem DashboardItem="pivotDashboardItem1" Weight="76.638176638176631" />
+          <LayoutItem DashboardItem="dateFilterDashboardItem1" Weight="23.361823361823362" />
+        </LayoutGroup>
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

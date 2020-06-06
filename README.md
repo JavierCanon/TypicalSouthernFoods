@@ -1,5 +1,5 @@
 ﻿# Typical Southern Foods
-Typical Southern Foods is a sample application built using ASP.NET, Oracle 18c Database and Entity Framework.
+Typical Southern Foods is a sample application built using ASP.NET, Oracle 18c Database or Sql Server 2017, and Entity Framework.
 
 ## Philosophy of Javier Cañon
 
@@ -13,7 +13,9 @@ Typical Southern Foods is a sample application built using ASP.NET, Oracle 18c D
 
 ✅ HTML5 JavaScript Responsive Web Development
 
-✅ MVC  
+✅ MVC (Model-View-Controller) or MVVM (Model-View-ViewModel)
+
+✅ [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) (is a computer-programming principle that states that every module or class should have responsibility over a single part of the functionality provided by the software, and that responsibility should be entirely encapsulated by the class, module or function).
 
 ### Clean Architecture
 
@@ -47,7 +49,7 @@ You will need the following tools:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) (version 16.6 or later)
 * [.NET 4.8](https://dotnet.microsoft.com/download)
-* [DevExpress 20.1.3](https://www.devexpress.com/)
+* [DevExpress 20.1.3 for ASP.NET](https://www.devexpress.com/) [Alternative 20.1.3 Trial Download](https://www.dropbox.com/s/ptx33o9442v1sw3/DevExpressUniversalTrialCompleteSetup-20200430-20.1.3.exe?dl=0)
 * [Oracle Database Server](https://www.oracle.com/downloads/)
 * [Oracle Data Access Components - .NET](https://www.oracle.com/database/technologies/net-downloads.html)
 
@@ -69,12 +71,15 @@ Follow these steps to get your development environment set up:
 ## Technologies
 
 * .NET 4.8
+* .NET Core 3.1
 * ASP.NET MVC 5 
+* ASP.NET MVVM Razor Pages
 * Razor 3
 * Blazor .NET Core 3.1
 * ASP.NET 4.8 Webforms
 * Entity Framework 6.4
 * Oracle RDBMS 18c
+* Sql Server 2017
 * Bootstrap 4
 * JQuery 3.5
 * HTML5

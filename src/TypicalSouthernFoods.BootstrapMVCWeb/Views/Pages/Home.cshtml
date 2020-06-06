@@ -1,0 +1,16 @@
+@{ ViewBag.Title = "Home"; }
+<div class="container-fluid">
+    <div class="row">
+
+   @Html.DevExpress().Dashboard(settings =>
+{
+    settings.Name = "Dashboard";
+    settings.InitialDashboardId = "DashboardMain";
+    settings.Width = Unit.Pixel(1600);
+    settings.Height = Unit.Pixel(1200);
+    settings.WorkingMode = DevExpress.DashboardWeb.WorkingMode.ViewerOnly;
+
+}).GetHtml()
+
+    </div>
+</div>

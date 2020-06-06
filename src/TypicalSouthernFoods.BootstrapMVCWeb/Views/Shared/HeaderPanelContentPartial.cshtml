@@ -1,0 +1,50 @@
+<div class='title'>
+    <a href='@Url.Action("Home", "Pages")'>Typical Southern Foods</a>
+    <p class="small">ASP.NET MVC + Oracle Example</p>
+</div>
+<div class="panelContent">
+    <div class="pull-right">
+        <div class="panelItem">
+            @Html.DevExpress().Menu(m => {
+           m.Name = "NavMenu";
+           m.EnableAnimation = true;
+           m.ControlStyle.CssClass = "navMenu";
+           m.Styles.Item.Paddings.PaddingLeft = 22;
+           m.Styles.Item.Paddings.PaddingRight = 22;
+
+           m.Items.Add("HOME").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Pages", Action = "Home" });
+           m.Items.Add("Invoices").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Pages", Action = "Invoices" });
+           m.Items.Add("Clients").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Pages", Action = "Clients" });
+
+           //m.Items.Add("BLOG").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Pages", Action = "BlogTimeline" });
+           //m.Items.Add("CONTACT US").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Pages", Action = "Contacts" });
+       }).GetHtml()
+ 
+        </div>
+        @if(ViewBag.ShowSearchEditor == null || ViewBag.ShowSearchEditor) {    
+        <div class="panelItem">
+            <script>
+                function OnSearchKeyUp(s, e) {
+                    if(e.htmlEvent.keyCode == 13) {
+                        OnSearchClick();
+                    }
+                }
+                function OnSearchClick(){
+                    $('#searchForm').submit();
+                }
+            </script>
+            @using(Html.BeginForm("Search", "Pages", FormMethod.Post, new { id = "searchForm" })) { 
+                Html.DevExpress().ButtonEdit(be => {
+                    be.Name = "Query";
+                    be.Properties.NullText = "Search in blog";
+                    be.ControlStyle.CssClass = "searchBox";
+                    be.Properties.ButtonStyle.CssClass = "glyphicon glyphicon-search searchBoxButton";
+                    be.Properties.Buttons.Add();
+                    be.Properties.ClientSideEvents.ButtonClick = "OnSearchClick";
+                    be.Properties.ClientSideEvents.KeyUp = "OnSearchKeyUp";
+                }).Render();
+            }        </div>
+        } 
+    </div>
+    <div class="clearfix"></div>
+</div>

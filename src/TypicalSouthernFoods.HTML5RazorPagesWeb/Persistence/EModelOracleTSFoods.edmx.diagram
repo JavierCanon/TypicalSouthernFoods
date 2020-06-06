@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b1211cd5e004456e85efe6d56469b398" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.CLIENT" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.INVOICE" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.INVOICES_DET" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RECIPE" Width="1.5" PointX="0.625" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TABLE" Width="1.5" PointX="5.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.WAITER" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_INVOICES_CLIENTS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_INVOICES_TABLES" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_INVOICES_WAITERS" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.INVOICES_DET_INVOICES" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.VIEW_INVOICES" Width="1.5" PointX="0.75" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

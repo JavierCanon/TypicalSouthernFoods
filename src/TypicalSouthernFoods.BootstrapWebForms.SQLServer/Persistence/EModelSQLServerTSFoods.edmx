@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TSFOODSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAMES" Type="varchar" MaxLength="60" />
+          <Property Name="SURNAMES" Type="varchar" MaxLength="60" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="100" />
+          <Property Name="PHONE" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="INVOICES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CLIENT" Type="int" />
+          <Property Name="ID_TABLE" Type="int" />
+          <Property Name="ID_WAITER" Type="int" />
+          <Property Name="INVOICE_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="INVOICES_DET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_INVOICE" Type="int" />
+          <Property Name="RECIPE_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="PRICE" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TSFOODS.dbo.RECIPES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RECIPES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="60" />
+          <Property Name="PRICE" Type="smallmoney" />
+        </EntityType>
+        <EntityType Name="TABLES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="60" />
+          <Property Name="RESERVED" Type="char" MaxLength="1" />
+          <Property Name="CHAIRS" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="WAITERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAMES" Type="varchar" MaxLength="60" />
+          <Property Name="SURNAMES" Type="varchar" MaxLength="60" />
+          <Property Name="AGE" Type="tinyint" />
+          <Property Name="SENIORITY" Type="tinyint" />
+        </EntityType>
+        <Association Name="FK_INVOICES_CLIENTS">
+          <End Role="CLIENTS" Type="Self.CLIENTS" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ID_CLIENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVOICES_TABLES">
+          <End Role="TABLES" Type="Self.TABLES" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TABLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ID_TABLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVOICES_WAITERS">
+          <End Role="WAITERS" Type="Self.WAITERS" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WAITERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ID_WAITER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICES_DET_INVOICES">
+          <End Role="INVOICES" Type="Self.INVOICES" Multiplicity="0..1" />
+          <End Role="INVOICES_DET" Type="Self.INVOICES_DET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVOICES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INVOICES_DET">
+              <PropertyRef Name="ID_INVOICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TSFOODSModelStoreContainer">
+          <EntitySet Name="CLIENTS" EntityType="Self.CLIENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INVOICES" EntityType="Self.INVOICES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INVOICES_DET" EntityType="Self.INVOICES_DET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TABLES" EntityType="Self.TABLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WAITERS" EntityType="Self.WAITERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECIPES" EntityType="Self.RECIPES" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RECIPES].[ID] AS [ID], 
+    [RECIPES].[NAME] AS [NAME], 
+    [RECIPES].[PRICE] AS [PRICE]
+    FROM [dbo].[RECIPES] AS [RECIPES]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_INVOICES_CLIENTS" Association="Self.FK_INVOICES_CLIENTS">
+            <End Role="CLIENTS" EntitySet="CLIENTS" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVOICES_TABLES" Association="Self.FK_INVOICES_TABLES">
+            <End Role="TABLES" EntitySet="TABLES" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVOICES_WAITERS" Association="Self.FK_INVOICES_WAITERS">
+            <End Role="WAITERS" EntitySet="WAITERS" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICES_DET_INVOICES" Association="Self.INVOICES_DET_INVOICES">
+            <End Role="INVOICES" EntitySet="INVOICES" />
+            <End Role="INVOICES_DET" EntitySet="INVOICES_DET" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TSFOODSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAMES" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SURNAMES" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INVOICES" Relationship="Self.FK_INVOICES_CLIENTS" FromRole="CLIENTS" ToRole="INVOICES" />
+        </EntityType>
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CLIENT" Type="Int32" />
+          <Property Name="ID_TABLE" Type="Int32" />
+          <Property Name="ID_WAITER" Type="Int32" />
+          <Property Name="INVOICE_DATE" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CLIENT" Relationship="Self.FK_INVOICES_CLIENTS" FromRole="INVOICES" ToRole="CLIENTS" />
+          <NavigationProperty Name="TABLE" Relationship="Self.FK_INVOICES_TABLES" FromRole="INVOICES" ToRole="TABLES" />
+          <NavigationProperty Name="WAITER" Relationship="Self.FK_INVOICES_WAITERS" FromRole="INVOICES" ToRole="WAITERS" />
+          <NavigationProperty Name="INVOICES_DET" Relationship="Self.INVOICES_DET_INVOICES" FromRole="INVOICES" ToRole="INVOICES_DET" />
+        </EntityType>
+        <EntityType Name="INVOICES_DET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_INVOICE" Type="Int32" />
+          <Property Name="RECIPE_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Int32" />
+          <NavigationProperty Name="INVOICE" Relationship="Self.INVOICES_DET_INVOICES" FromRole="INVOICES_DET" ToRole="INVOICES" />
+        </EntityType>
+        <EntityType Name="TABLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="RESERVED" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CHAIRS" Type="Byte" />
+          <NavigationProperty Name="INVOICES" Relationship="Self.FK_INVOICES_TABLES" FromRole="TABLES" ToRole="INVOICES" />
+        </EntityType>
+        <EntityType Name="WAITER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAMES" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SURNAMES" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AGE" Type="Byte" />
+          <Property Name="SENIORITY" Type="Byte" />
+          <NavigationProperty Name="INVOICES" Relationship="Self.FK_INVOICES_WAITERS" FromRole="WAITERS" ToRole="INVOICES" />
+        </EntityType>
+        <Association Name="FK_INVOICES_CLIENTS">
+          <End Role="CLIENTS" Type="Self.CLIENT" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ID_CLIENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVOICES_TABLES">
+          <End Role="TABLES" Type="Self.TABLE" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TABLES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ID_TABLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVOICES_WAITERS">
+          <End Role="WAITERS" Type="Self.WAITER" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WAITERS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ID_WAITER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="INVOICES_DET_INVOICES">
+          <End Role="INVOICES" Type="Self.INVOICE" Multiplicity="0..1" />
+          <End Role="INVOICES_DET" Type="Self.INVOICES_DET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVOICES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INVOICES_DET">
+              <PropertyRef Name="ID_INVOICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntitiesDataModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTS" EntityType="Self.CLIENT" />
+          <EntitySet Name="INVOICES" EntityType="Self.INVOICE" />
+          <EntitySet Name="INVOICES_DET" EntityType="Self.INVOICES_DET" />
+          <EntitySet Name="TABLES" EntityType="Self.TABLE" />
+          <EntitySet Name="WAITERS" EntityType="Self.WAITER" />
+          <AssociationSet Name="FK_INVOICES_CLIENTS" Association="Self.FK_INVOICES_CLIENTS">
+            <End Role="CLIENTS" EntitySet="CLIENTS" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVOICES_TABLES" Association="Self.FK_INVOICES_TABLES">
+            <End Role="TABLES" EntitySet="TABLES" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVOICES_WAITERS" Association="Self.FK_INVOICES_WAITERS">
+            <End Role="WAITERS" EntitySet="WAITERS" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="INVOICES_DET_INVOICES" Association="Self.INVOICES_DET_INVOICES">
+            <End Role="INVOICES" EntitySet="INVOICES" />
+            <End Role="INVOICES_DET" EntitySet="INVOICES_DET" />
+          </AssociationSet>
+          <EntitySet Name="RECIPES" EntityType="TSFOODSModel.RECIPE" />
+        </EntityContainer>
+        <EntityType Name="RECIPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="10" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TSFOODSModelStoreContainer" CdmEntityContainer="EntitiesDataModel">
+          <EntitySetMapping Name="CLIENTS">
+            <EntityTypeMapping TypeName="TSFOODSModel.CLIENT">
+              <MappingFragment StoreEntitySet="CLIENTS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAMES" ColumnName="NAMES" />
+                <ScalarProperty Name="SURNAMES" ColumnName="SURNAMES" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVOICES">
+            <EntityTypeMapping TypeName="TSFOODSModel.INVOICE">
+              <MappingFragment StoreEntitySet="INVOICES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
+                <ScalarProperty Name="ID_TABLE" ColumnName="ID_TABLE" />
+                <ScalarProperty Name="ID_WAITER" ColumnName="ID_WAITER" />
+                <ScalarProperty Name="INVOICE_DATE" ColumnName="INVOICE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVOICES_DET">
+            <EntityTypeMapping TypeName="TSFOODSModel.INVOICES_DET">
+              <MappingFragment StoreEntitySet="INVOICES_DET">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_INVOICE" ColumnName="ID_INVOICE" />
+                <ScalarProperty Name="RECIPE_NAME" ColumnName="RECIPE_NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TABLES">
+            <EntityTypeMapping TypeName="TSFOODSModel.TABLE">
+              <MappingFragment StoreEntitySet="TABLES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="RESERVED" ColumnName="RESERVED" />
+                <ScalarProperty Name="CHAIRS" ColumnName="CHAIRS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WAITERS">
+            <EntityTypeMapping TypeName="TSFOODSModel.WAITER">
+              <MappingFragment StoreEntitySet="WAITERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAMES" ColumnName="NAMES" />
+                <ScalarProperty Name="SURNAMES" ColumnName="SURNAMES" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="SENIORITY" ColumnName="SENIORITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECIPES">
+            <EntityTypeMapping TypeName="TSFOODSModel.RECIPE">
+              <MappingFragment StoreEntitySet="RECIPES">
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

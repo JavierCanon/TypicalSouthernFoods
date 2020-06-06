@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d182043d75bc49b4a4bb972ab81f06e9" Name="Diagram1">
+        <EntityTypeShape EntityType="TSFOODSModel.CLIENT" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TSFOODSModel.INVOICE" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TSFOODSModel.INVOICES_DET" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TSFOODSModel.TABLE" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TSFOODSModel.WAITER" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="TSFOODSModel.FK_INVOICES_CLIENTS" ManuallyRouted="false" />
+        <AssociationConnector Association="TSFOODSModel.FK_INVOICES_TABLES" ManuallyRouted="false" />
+        <AssociationConnector Association="TSFOODSModel.FK_INVOICES_WAITERS" ManuallyRouted="false" />
+        <AssociationConnector Association="TSFOODSModel.INVOICES_DET_INVOICES" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TSFOODSModel.RECIPE" Width="1.5" PointX="3.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

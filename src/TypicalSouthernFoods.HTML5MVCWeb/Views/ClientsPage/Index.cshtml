@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Clients</h2>
+
+@(Html.DevExtreme().DataGrid<TypicalSouthernFoods.HTML5MVCWeb.Persistence.CLIENT>()
+    .DataSource(ds => ds.WebApi()
+        .RouteName("ClientsApi")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("ID")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.ID);
+
+        columns.AddFor(m => m.NAMES);
+
+        columns.AddFor(m => m.SURNAMES);
+
+        columns.AddFor(m => m.ADDRESS);
+
+        columns.AddFor(m => m.PHONE);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)
